@@ -1,0 +1,22 @@
+library(ggplot2)
+library(plyr)
+library(data.table)
+library(grid)
+library(scales)
+setwd("/Users/pesto/Documents/school/Coursera/eda")
+HPC <- read.table("household_power_consumption.txt",sep=";",skip=23437,nrows=50000,header=FALSE)
+hpcdf<-rbind(HPC[HPC$V1=="1/2/2007",],HPC[HPC$V1=="2/2/2007",])
+names(hpcdf)<-c("Date","Time","Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3")
+hpcdf$Date<-as.Date(hpcdf$Date,"%d/%m/%Y")
+hpcdf$Global_active_power<-factor(hpcdf$Global_active_power)
+hpcdf.fac<-factor(hpcdf$Global_active_power)
+hpcdf$gap<-as.numeric(as.character(hpcdf.fac))
+hpcdf$dtime<-strptime(paste(hpcdf$Date,hpcdf$Time), "%Y-%m-%d %H:%M:%S")
+hpcdf$day<-format(hpcdf$dtime[1],"%a")
+png('plot2.png')
+hplot<-ggplot(data=hpcdf,aes(x=dtime,y=gap)) + geom_line() + xlab("") + ylab("GLobal Active Power (kilowatts)")
+hplot + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+  panel.background = element_blank(), axis.line = element_line(color = "black"),
+  legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
+  axis.text.y = element_text(color="black"))
+dev.off()
