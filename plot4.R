@@ -26,7 +26,7 @@ toplot$time<-strptime(toplot$time, "%Y-%m-%d %H:%M:%S")
 toplot$value<-as.numeric(as.character(toplot$value))
 
 
-plot2<-ggplot(data=hpcdf,aes(x=dtime,y=gap)) + geom_line() + xlab("") + ylab("GLobal Active Power")
+plot2<-ggplot(data=hpcdf,aes(x=dtime,y=gap)) + geom_line() + xlab("") + ylab("Global Active Power")
 plot2<-plot2 + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
   panel.background = element_blank(), axis.line = element_line(color = "black"),
   legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
