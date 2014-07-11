@@ -26,11 +26,11 @@ toplot$time<-strptime(toplot$time, "%Y-%m-%d %H:%M:%S")
 toplot$value<-as.numeric(as.character(toplot$value))
 
 
-plot2<-ggplot(data=hpcdf,aes(x=dtime,y=gap)) + geom_line() + xlab("") + ylab("GLobal Active Power (kilowatts)")
+plot2<-ggplot(data=hpcdf,aes(x=dtime,y=gap)) + geom_line() + xlab("") + ylab("GLobal Active Power")
 plot2<-plot2 + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-                                                                                 panel.background = element_blank(), axis.line = element_line(color = "black"),
-                                                                                 legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
-                                                                                 axis.text.y = element_text(color="black"))
+  panel.background = element_blank(), axis.line = element_line(color = "black"),
+  legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
+  axis.text.y = element_text(color="black"))
 
 plot3<-ggplot(toplot, aes(x=time, y=value, group=variable, colour=variable )) + geom_line()
 plot3 <- plot3 + scale_y_discrete(breaks=c("0","10","20","30")) + ylab("Energy sub metering")
@@ -45,7 +45,7 @@ plot3 <- plot3 + theme(legend.position=c(.80,.80),
                        axis.text.x = element_text(color="black"),
                        axis.text.y = element_text(color="black"))
 
-plot4a<-ggplot(data=hpcdf,aes(x=dtime,y=grap)) + geom_line() + xlab("datetime") + ylab("Global Rective Power (kilowatts)")
+plot4a<-ggplot(data=hpcdf,aes(x=dtime,y=grap)) + geom_line() + xlab("datetime") + ylab("Global_reactive_power")
 plot4a<-plot4a + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
   panel.background = element_blank(), axis.line = element_line(color = "black"),
   legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
