@@ -45,13 +45,13 @@ plot3 <- plot3 + theme(legend.position=c(.80,.80),
                  axis.text.x = element_text(color="black"),
                  axis.text.y = element_text(color="black"))
 
-plot4a<-ggplot(data=hpcdf,aes(x=dtime,y=grap)) + geom_line() + xlab("") + ylab("GLobal Rective Power (kilowatts)")
+plot4a<-ggplot(data=hpcdf,aes(x=dtime,y=grap)) + geom_line() + xlab("datetime") + ylab("GLobal Rective Power (kilowatts)")
 plot4a<-plot4a + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
   panel.background = element_blank(), axis.line = element_line(color = "black"),
   legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
   axis.text.y = element_text(color="black"))
 
-plot4b<-ggplot(data=hpcdf,aes(x=dtime,y=vfac)) + geom_line() + xlab("") + ylab("Voltage")
+plot4b<-ggplot(data=hpcdf,aes(x=dtime,y=vfac)) + geom_line() + xlab("datetime") + ylab("Voltage")
 plot4b<-plot4b + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
   panel.background = element_blank(), axis.line = element_line(color = "black"),
   legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
