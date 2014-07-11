@@ -58,8 +58,8 @@ plot4b<-plot4b + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + the
   axis.text.y = element_text(color="black"))
 plot4b<-plot4b + scale_y_continuous(breaks=(seq(234,246,4)))
 plot4b
-#png('plot4.png')
+png('plot4.png')
 
 grid.arrange(plot2,plot4b,plot3,plot4a, ncol = 2)
 
-#dev.off()
+dev.off()
