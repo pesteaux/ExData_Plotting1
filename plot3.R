@@ -19,7 +19,7 @@ names(tmdf)<-c("time","Sub_metering_1","Sub_metering_2","Sub_metering_3")
 toplot<-melt(tmdf,id.vars="time")
 toplot$time<-strptime(toplot$time, "%Y-%m-%d %H:%M:%S")
 toplot$value<-as.numeric(as.character(toplot$value))
-#png('plot3.png')
+png('plot3.png')
 dfplot<-ggplot(toplot, aes(x=time, y=value, group=variable, colour=variable )) + geom_line()
 dfplot1 <- dfplot + scale_y_discrete(breaks=c("0","10","20","30")) + ylab("Energy sub metering")
 dfplot2 <- dfplot1 + scale_x_datetime(breaks="1 day",labels=date_format("%a")) + xlab("")
@@ -28,4 +28,4 @@ dfplot3 +  theme(panel.grid.major = element_blank(), panel.grid.minor = element_
                   panel.background = element_blank(), axis.line = element_line(color = "black"),
                   legend.background=element_rect(color="black"),axis.text.x = element_text(color="black"),
                   axis.text.y = element_text(color="black"))
-#dev.off()
+dev.off()
